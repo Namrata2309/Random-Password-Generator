@@ -6,6 +6,9 @@ const lowerCase = "abcdefghijklmnopqrstuvwxyz";
 const number = "0123456789";
 const symbol = "@#$%^&*()_+~|}{[]<>/-=";
 
+
+const allChars = upperCase + lowerCase + number + symbol;
+
 function createPassword() {
     let password = "";
     const charType = document.querySelector('input[name="password"]:checked'); 
@@ -20,22 +23,23 @@ function createPassword() {
             // Only numbers
             password += number[Math.floor(Math.random() * number.length)];
         } else if (charType.value === "mix") {
-             // Mix
+            // Mix
             password += allChars[Math.floor(Math.random() * allChars.length)];
         }
 
-        
         while (length > password.length) {
             if (charType.value === "char") {
                 password += upperCase[Math.floor(Math.random() * upperCase.length)];
                 password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
             } else if (charType.value === "number") {
                 password += number[Math.floor(Math.random() * number.length)];
-             } else if (charType.value === "mix") {
+            } else if (charType.value === "mix") {
                 password += allChars[Math.floor(Math.random() * allChars.length)];
-             }
+            }
         }
 
+        
+        
         passwordBox.value = password;
     } else {
         alert("Please select a password type.");
